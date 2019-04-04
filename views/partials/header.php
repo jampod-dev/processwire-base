@@ -8,8 +8,11 @@
 		<title><?php echo $page->get("headline|title"); ?></title>
 
 		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
-
-		<link rel="stylesheet" type`="text/css" href="<?php echo $config->urls->templates?>css/style.min.css" />
+		<?php if ($config->environment == 'production') : ?>
+			<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates?>css/style.min.css" />
+		<?php else : ?>
+			<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates?>css/style.min.css?v=<?= time() ?>" />
+		<?php endif; ?>
 
 	</head>
 	<body>
